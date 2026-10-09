@@ -155,6 +155,34 @@
     @media (min-width:640px) and (max-width:1099px) { .cards { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media (max-width:639px) { .cards { grid-template-columns:1fr; } .section-head { display:grid; gap:12px; } }
     @media (max-width:560px) { .card { padding:20px 18px; } .tag { min-height:32px; } }
+    /* Materiales · catálogo por familias */
+    .hero.page-hero { border-radius:8px 28px 8px 28px; border-color:rgba(85,174,242,.35); background-image:repeating-linear-gradient(90deg,rgba(85,174,242,.035) 0 1px,transparent 1px 34px),radial-gradient(ellipse at 88% 18%,rgba(85,174,242,.19),transparent 35%),linear-gradient(135deg,#1b252b,#17191b 66%,#241b16); }
+    .hero.page-hero::after { content:"▤"; position:absolute; z-index:-1; right:clamp(22px,6vw,100px); top:50%; transform:translateY(-50%); color:var(--accent); font-size:clamp(9rem,18vw,15rem); line-height:.8; opacity:.07; pointer-events:none; }
+    .material-index { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; max-width:780px; margin-top:26px; }
+    .material-index a { display:flex; align-items:center; gap:10px; min-height:56px; padding:9px 13px; border:1px solid rgba(255,255,255,.12); border-radius:13px; background:rgba(15,18,20,.62); color:var(--ink); text-decoration:none; transition:transform .18s ease,border-color .18s ease; }
+    .material-index a:hover { transform:translateY(-2px); border-color:rgba(85,174,242,.6); }
+    .material-index a span:first-child { display:grid; place-items:center; flex:0 0 30px; width:30px; height:30px; border:1px solid rgba(85,174,242,.28); border-radius:9px; color:#9fd4fa; font-size:1.05rem; }
+    .material-index a span:nth-child(2) { flex:1; font-size:.9rem; font-weight:750; }
+    .material-index a b { color:var(--muted); font-size:.72rem; letter-spacing:.08em; }
+    #materiales .section-head h2,#reforzados .section-head h2,#especiales .section-head h2,#eleccion .section-head h2,#fuentes h2 { display:flex; align-items:center; gap:12px; }
+    #materiales .section-head h2::before,#reforzados .section-head h2::before,#especiales .section-head h2::before,#eleccion .section-head h2::before,#fuentes h2::before { display:inline-grid; place-items:center; flex:0 0 42px; width:42px; height:42px; border:1px solid rgba(85,174,242,.32); border-radius:12px; background:rgba(85,174,242,.08); color:var(--accent); font-size:1.1rem; }
+    #materiales .section-head h2::before { content:"○"; }
+    #reforzados .section-head h2::before { content:"▤"; border-color:rgba(165,104,68,.48); background:rgba(165,104,68,.10); color:#d9a27a; }
+    #especiales .section-head h2::before { content:"△"; border-color:rgba(165,104,68,.48); background:rgba(165,104,68,.10); color:#d9a27a; }
+    #eleccion .section-head h2::before { content:"◇"; }
+    #fuentes h2::before { content:"≡"; }
+    #materiales .card { border-top:2px solid rgba(85,174,242,.72); border-radius:8px 18px 18px; }
+    #reforzados .card { border-top:2px solid rgba(165,104,68,.78); border-radius:8px 18px 18px; background:linear-gradient(150deg,rgba(165,104,68,.055),transparent 52%),var(--panel); }
+    #especiales .card { border-top:2px solid #a8cce1; border-radius:8px 18px 18px; background:linear-gradient(150deg,rgba(85,174,242,.065),transparent 52%),var(--panel); }
+    .tag { display:inline-flex; align-items:center; min-height:30px; padding:5px 10px; border:1px solid rgba(85,174,242,.26); border-radius:999px; background:rgba(85,174,242,.075); font-size:.72rem; letter-spacing:.045em; }
+    #reforzados .tag { border-color:rgba(165,104,68,.42); background:rgba(165,104,68,.10); color:#e0b18d; }
+    #eleccion .choose { counter-reset:elige; gap:14px; }
+    #eleccion .choice { position:relative; min-height:126px; padding:22px 20px 20px 64px; border-radius:9px 18px 18px; }
+    #eleccion .choice::before { counter-increment:elige; content:"0" counter(elige); position:absolute; top:20px; left:17px; display:grid; place-items:center; width:34px; height:34px; border:1px solid rgba(85,174,242,.36); border-radius:11px; color:#9fd4fa; font-size:.72rem; font-weight:850; }
+    #fuentes .sources a { padding:12px 16px; border:1px solid rgba(255,255,255,.1); border-radius:12px; background:rgba(255,255,255,.025); text-decoration:none; }
+    #fuentes .sources a:hover { border-color:var(--accent); color:var(--accent); }
+    @media (max-width:760px) { .material-index { margin-top:22px; } }
+    @media (max-width:560px) { .hero.page-hero::after { right:5px; top:13%; font-size:7rem; } .material-index { gap:7px; } .material-index a { flex-direction:column; justify-content:center; gap:5px; min-height:88px; padding:8px 3px; text-align:center; } .material-index a span:first-child { width:28px; height:28px; flex-basis:28px; } .material-index a span:nth-child(2) { flex:auto; font-size:.72rem; } .material-index a b { font-size:.64rem; } #materiales .section-head h2::before,#reforzados .section-head h2::before,#especiales .section-head h2::before,#eleccion .section-head h2::before,#fuentes h2::before { flex-basis:36px; width:36px; height:36px; } }
   </style>
 </head>
 <body>
@@ -188,6 +216,11 @@
       <div class="eyebrow">Proyecto escolar · Impresión 3D FDM</div>
       <h1>Materiales para<br><span>imprimir en 3D.</span></h1>
       <p class="lead">Acá explicamos los 16 materiales de la lista de pedidos, agrupados para leerlos más fácil. Sus propiedades varían según la mezcla y la impresora.</p>
+      <nav class="material-index" aria-label="Explorar familias de materiales">
+        <a href="#materiales"><span aria-hidden="true">○</span><span>Comunes</span><b>05</b></a>
+        <a href="#reforzados"><span aria-hidden="true">▤</span><span>Con fibras</span><b>07</b></a>
+        <a href="#especiales"><span aria-hidden="true">△</span><span>Técnicos</span><b>04</b></a>
+      </nav>
     </div>
     <section id="materiales">
     <div class="wrap">
